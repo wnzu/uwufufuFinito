@@ -1,0 +1,243 @@
+    body {
+        background-color: #181818ee;
+        color: white;
+        margin: 0;
+        padding: 0;
+        transition: opacity 0.5s ease-out;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .arena {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        /* tre colonne: film1 | VS | film2 */
+        align-items: center;
+        /* centra tutto verticalmente */
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+
+    .versus {
+        font-size: 100px;
+        text-align: center;
+        background: linear-gradient(to right, #007BFF, #00CFFF);
+        background-clip: text;
+        /* Applica il gradiente solo al testo */
+        color: transparent;
+        /* Rende il colore del testo trasparente, così vediamo solo il gradiente */
+        align-self: center;
+    }
+
+    #infoRound {
+        text-align: center;
+        padding-top: 100px;
+        font-size: 30px;
+        background: linear-gradient(to right, #007BFF, #00CFFF);
+        background-clip: text;
+        color: transparent;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    /*----------------------------------------------*/
+
+
+    #film1,
+    #film2 {
+        padding-top: 10px;
+        /*spazio per centrare le immagini*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-self: center;
+        /* stessa larghezza dell'immagine */
+        font-size: 40px;
+        /* Cambia la dimensione della scritta */
+        background: linear-gradient(to right, #007BFF, #00CFFF);
+        background-clip: text;
+        /* Applica il gradiente solo al testo */
+        color: transparent;
+        /* Rende il colore del testo trasparente, così vediamo solo il gradiente */
+        justify-content: center;
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        transition: transform 0.3s ease;
+
+    }
+
+
+
+    #film1 img,
+    #film2 img {
+        width: 350px;
+        height: 525px;
+        /* dimensione delle immagini fissa cosi da non averle diverse */
+        border-radius: 12px;
+        /* opzionale: angoli arrotondati */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        /* effetto ombra figo */
+        object-fit: cover;
+    }
+
+    #film1:hover,
+    #film2:hover {
+        transform: scale(1.05);
+    }
+
+
+    /*----------------------------------------------*/
+
+
+    .titolo-vincitore {
+        text-align: center;
+        white-space: pre-line;
+        padding-bottom: 10px;
+        background: linear-gradient(to right, #007BFF, #00CFFF);
+        background-clip: text;
+        /* Applica il gradiente solo al testo */
+        color: transparent;
+        font-size: 40px;
+    }
+
+    .container-vincitore {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        height: 525px;
+    }
+
+    .container-vincitore .imgVinci {
+        width: 300px;
+        height: 525px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        /* effetto ombra figo */
+        transition: transform 0.3s ease;
+
+    }
+
+    .container-vincitore .imgVinci:hover,
+    .container-vincitore button:hover {
+        transform: scale(1.05);
+    }
+
+    .grande-vincitore {
+        width: 800px;
+        height: 700px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        /* effetto ombra figo */
+        transition: transform 0.3s ease;
+    }
+
+
+    .bottoneHome {
+        padding: 12px 20px;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: linear-gradient(to right, #007BFF, #00CFFF);
+        transition: transform 0.3s ease;
+
+    }
+
+    .btn-close {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 60px;
+        padding: 10px;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+        background: linear-gradient(to right, #007BFF, #00CFFF);
+        background-clip: text;
+        color: transparent;
+    }
+
+    .btn-close:hover {
+        transform: scale(1.20);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    #background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        /* dietro tutto */
+        background: #111;
+        /* colore di base scuro */
+        display: block;
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+    }
+
+    .fade-out {
+        animation: fadeOut 0.5s ease-out forwards;
+    }
+
+    /* 
+  Questa media query si attiva quando la larghezza della finestra del browser 
+  è di 900 pixel o meno e serve per mettere le immagini e la scritta vs in colonna e non più una di fianco all'altra
+*/
+    @media (max-width: 900px) {
+        .arena {
+            grid-template-columns: 1fr;
+            /* Una sola colonna che occupa tutto lo spazio disponibile */
+            grid-template-rows: auto auto auto;
+            /* Tre righe: film1, VS, film2 */
+        }
+
+        .versus {
+            font-size: 60px;
+            /* Riduce la dimensione del font da 100px a 60px */
+            margin: 20px 0;
+            /* Aggiunge 20px di spazio sopra e sotto */
+        }
+
+        #infoRound {
+            padding-top: 30px;
+        }
+
+        #film2 {
+            margin-bottom: 30px;
+            /* o padding-bottom: 30px; */
+        }
+
+        #film1,
+        #film2 {
+            white-space: normal;
+            overflow: visible;
+            text-overflow: unset;
+        }
+
+        .btn-close {
+            top: 10px;
+            left: 10px;
+            font-size: 50px;
+            padding: 5px;
+        }
+    }
