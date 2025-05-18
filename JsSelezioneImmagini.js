@@ -2051,7 +2051,7 @@ let home = document.getElementById("titolo"); // titolo per tornare alla home
 home.addEventListener("click", (e) => {
     document.body.classList.add("fade-out"); // Aggiunge l'effetto di dissolvenza alla pagina
     setTimeout(function () {
-        window.location.href = "uwufufu.html"; // Dopo 500 ms, reindirizza alla home
+        window.location.href = "index.html"; // Dopo 500 ms, reindirizza alla home
     }, 500);
 });
 
