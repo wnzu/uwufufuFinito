@@ -60,9 +60,6 @@
         /* Rende il colore del testo trasparente, così vediamo solo il gradiente */
         justify-content: center;
         font-weight: bold;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         transition: transform 0.3s ease;
 
     }
