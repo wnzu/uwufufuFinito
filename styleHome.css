@@ -74,7 +74,9 @@ h1 {
     top: 0;
     left: 0;
     width: 100vw;
+    /* largo quanto la finestra*/
     height: 100vh;
+    /* alto quanto la finestra*/
     z-index: -1;
     /* dietro tutto */
     background: #111;
