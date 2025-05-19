@@ -89,7 +89,7 @@
 
     .titolo-vincitore {
         text-align: center;
-        white-space: pre-line;
+        white-space: pre-line; /*va a capo quando serve*/
         padding-bottom: 10px;
         background: linear-gradient(to right, #007BFF, #00CFFF);
         background-clip: text;
