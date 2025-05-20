@@ -50,9 +50,7 @@
         flex-direction: column;
         align-items: center;
         justify-self: center;
-        /* stessa larghezza dell'immagine */
         font-size: 40px;
-        /* Cambia la dimensione della scritta */
         background: linear-gradient(to right, #007BFF, #00CFFF);
         background-clip: text;
         /* Applica il gradiente solo al testo */
@@ -72,9 +70,7 @@
         height: 525px;
         /* dimensione delle immagini fissa cosi da non averle diverse */
         border-radius: 12px;
-        /* opzionale: angoli arrotondati */
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        /* effetto ombra figo */
         object-fit: cover;
     }
 
@@ -115,7 +111,6 @@
         height: 525px;
         border-radius: 12px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        /* effetto ombra figo */
         transition: transform 0.3s ease;
 
     }
@@ -130,7 +125,6 @@
         height: 700px;
         border-radius: 12px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        /* effetto ombra figo */
         transition: transform 0.3s ease;
     }
 
