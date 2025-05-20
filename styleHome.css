@@ -13,9 +13,7 @@ body {
     flex-wrap: wrap;
     /* manda a capo quando finisce la riga delle card */
     justify-content: center;
-    /* centra le card */
     gap: 20px;
-    /* spazio tra le card */
     padding: 10px;
 }
 
