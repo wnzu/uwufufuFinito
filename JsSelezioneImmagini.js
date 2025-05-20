@@ -2266,7 +2266,7 @@ class SpaceStar {
 const spaceStars = [];
 const STAR_COUNT = 200;  // Numero di stelle
 
-// Crea tutte le stelle e le aggiunge all'array
+// Crea le stelle e le aggiunge all'array
 for (let i = 0; i < STAR_COUNT; i++) {
     spaceStars.push(new SpaceStar());
 }
