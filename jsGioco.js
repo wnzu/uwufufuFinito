@@ -1,51 +1,47 @@
-// Prende l'elenco dei film salvati nel localStorage dalla pagina precedente
+
 let filmInGioco = JSON.parse(localStorage.getItem("filmInGioco")) || [];
 
 let cartellaImmagini = localStorage.getItem("cartellaImmagini") || 'images/';
 
 let estensione = localStorage.getItem("estensione") || '.jpg';
 
-// Array per salvare i film vincitori di ogni match
 let vincitoriRound = [];
 
-// Recupera da localStorage il numero totale di film, convertendolo in intero
 let numeroFilm = parseInt(localStorage.getItem("numeroFilm"));
 
 // Variabile che tiene traccia di quanti film sono attualmente in gioco nel round
 let nFilm = numeroFilm;
 
-// Contatore dei match all'interno di un round
 let matchNumero = 1;
 
 
 
-// Funzione per mescolare gli elementi di un array in ordine casuale (algoritmo di Fisher–Yates)
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1)); // indice casuale
-        [array[i], array[j]] = [array[j], array[i]];   // scambia i due elementi
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
 
-// Funzione principale per avviare il gioco
+// Funzione principale
 function startGame() {
 
-    // Mescola l'ordine dei film all'inizio del gioco
     shuffleArray(filmInGioco);
 
-    // Funzione interna che gestisce la visualizzazione di una sfida (match)
+    // Funzione interna che gestisce la visualizzazione dei film
     function mostraSfida() {
-        // Aggiorna le informazioni del round e del match nell'intefaccia
+
         let infoRound = document.getElementById("infoRound");
         if (infoRound) {
             infoRound.textContent = "Round " + nFilm + " Match " + matchNumero;
         }
 
-        // Caso finale: un solo vincitore rimasto -> fine del torneo
+        //un solo vincitore rimasto -> fine del torneo
         if (filmInGioco.length == 0 && vincitoriRound.length == 1) {
-            let vincitore = vincitoriRound[0]; // prendi il vincitore finale
+            let vincitore = vincitoriRound[0];
 
-            // Ottieni riferimenti agli elementi del DOM
+            
             let film1d = document.getElementById("film1");
             let film2d = document.getElementById("film2");
             let versusText = document.querySelector(".versus");
@@ -60,18 +56,18 @@ function startGame() {
             film1d.innerHTML = "";
             film2d.innerHTML = "";
 
-            // Crea e mostra immagine del vincitore
+            
             let imgVincitore = document.createElement('img');
             imgVincitore.src = cartellaImmagini + vincitore[2] + estensione;
             imgVincitore.classList.add("imgVinci");
 
 
-            // Crea e mostra titolo del vincitore
+            
             let titoloVincitore = document.createElement('h2');
             titoloVincitore.textContent = "Il vincitore è: \n" + vincitore[0];
             titoloVincitore.classList.add('titolo-vincitore');
 
-            // Crea bottone per tornare alla home
+            
             let bottoneHome = document.createElement('button');
             bottoneHome.classList.add("bottoneHome");
             bottoneHome.textContent = "Torna alla Home";
@@ -79,7 +75,7 @@ function startGame() {
                 window.location.href = "Scelta.html";
             };
 
-            // Contenitore finale del vincitore
+            
             let containerVincitore = document.createElement('div');
             containerVincitore.classList.add("container-vincitore");
 
@@ -91,19 +87,19 @@ function startGame() {
             return; // interrompi la funzione
         }
 
-        // Se il round è finito ma ci sono più vincitori (serve un nuovo round)
+        // Se il round è finito ma ci sono più vincitori
         if (filmInGioco.length == 0) {
             if (vincitoriRound.length > 1) {
-                filmInGioco = vincitoriRound; // i vincitori diventano i nuovi film in gioco
-                vincitoriRound = [];          // resetta vincitori
-                nFilm = nFilm / 2;            // dimezza il numero di film (nuovo round)
-                matchNumero = 1;              // resetta il contatore dei match
-                shuffleArray(filmInGioco);    // mescola i nuovi film
-                mostraSfida();                // inizia nuovo round
+                filmInGioco = vincitoriRound; 
+                vincitoriRound = [];         
+                nFilm = nFilm / 2;            
+                matchNumero = 1;             
+                shuffleArray(filmInGioco);   
+                mostraSfida();               
             }
         }
 
-        // Prendi i due film da mostrare nel match attuale
+        
         let film1 = filmInGioco[0];
         let film2 = filmInGioco[1];
 
@@ -115,7 +111,7 @@ function startGame() {
         img2.src = cartellaImmagini + film2[2] + estensione;
 
 
-        // Crea titoli dei film (sotto le immagini)
+        
         let titoloImg1 = document.createElement('div');
         titoloImg1.textContent = film1[0];
         titoloImg1.style.paddingTop = "15px";
@@ -126,7 +122,7 @@ function startGame() {
         titoloImg2.style.paddingTop = "15px";
         titoloImg2.style.textAlign = 'center';
 
-        // Ottieni i contenitori per i film
+        
         let film1d = document.getElementById("film1");
         let film2d = document.getElementById("film2");
 
@@ -149,7 +145,7 @@ function startGame() {
             film2d.style.opacity = "1";
         }, 50);
 
-        // Imposta gli eventi di click per scegliere l'immagine
+        // Imposta gli eventi click per scegliere l'immagine
 
         img1.addEventListener("click", () => {
             vincitoriRound.push(film1);    // salva il vincitore
