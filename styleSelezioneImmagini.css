@@ -31,7 +31,7 @@ body {
 }
 
 
-/* div che contine il div del titolo e il select, con questo creo una specie di navbar per contenerli*/
+
 .menu-container {
     display: flex;
     justify-content: space-evenly;
@@ -40,7 +40,7 @@ body {
     background: rgba(50, 50, 50, 0.4);
 }
 
-/*modifico tutti i select in modo uguale*/
+
 select {
     background: linear-gradient(to right, #007BFF, #00CFFF);
     color: white;
@@ -51,7 +51,7 @@ select {
     background-color: #444;
 }
 
-/* tutti i bottoni con lo stesso design*/
+
 button {
     background: linear-gradient(to right, #007BFF, #00CFFF);
     color: white;
@@ -66,26 +66,26 @@ button {
 
 }
 
-/*classe per transizione per tornare alla home cliccando sul titolo*/
+
 .fade-out {
     opacity: 0;
     pointer-events: none;
     background-color: #000011;
 }
 
-/*hover per i bottoni*/
+
 button:hover {
     transform: scale(1.05);
 }
 
 
-/*aggiunta per il bottone all'interno della scelta per iniziare il round*/
+
 .bottonePlay {
     margin-top: 10px;
     float: right;
 }
 
-/*modifica per creare la finestra di scelta del round*/
+
 .finestra {
     position: fixed;
     inset: 0;
@@ -96,7 +96,7 @@ button:hover {
     align-items: center;
 }
 
-/*modifica per il contenuto della finestra quindi lo sfondo*/
+
 .contFin {
     padding: 20px;
     border-radius: 8px;
@@ -106,12 +106,12 @@ button:hover {
     width: 25%;
 }
 
-/*rendo il select all'interno della finestra grande quanto il contenuto(contFin)*/
+
 .contFin select {
     width: 100%;
 }
 
-/*modifica dell' h2 per la categoria di film e il bottone per avviare la finistra per i round*/
+
 .justify-evenly {
     display: flex;
     justify-content: space-evenly;
@@ -124,9 +124,7 @@ button:hover {
     flex-wrap: wrap;
     /* manda a capo quando finisce la riga */
     justify-content: center;
-    /* centra i film */
     gap: 20px;
-    /* spazio tra le immagini */
     padding: 20px;
 
 }
@@ -162,9 +160,7 @@ button:hover {
     width: 100vw;
     height: 100vh;
     z-index: -1;
-    /* dietro tutto */
     background: #111;
-    /* colore di base scuro */
     display: block;
 }
 
