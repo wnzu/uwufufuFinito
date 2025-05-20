@@ -189,85 +189,85 @@ comeback.addEventListener("click", () => {
     window.location.href = "Scelta.html";
 });
 
-// Ottieni l'elemento canvas dal DOM e il suo contesto di rendering 2D
+
 let canvas = document.getElementById('background');
 let ctx = canvas.getContext('2d');
 
-// Variabili per memorizzare larghezza e altezza del canvas
+
 let width, height;
 
-// Funzione per ridimensionare il canvas in base alle dimensioni della finestra
-function resize() {
-    width = window.innerWidth;  // Larghezza della finestra
-    height = window.innerHeight;  // Altezza della finestra
-    canvas.width = width;  // Imposta la larghezza del canvas
-    canvas.height = height;  // Imposta l'altezza del canvas
-}
-resize();  // Esegui la funzione resize una volta all'inizio
-window.addEventListener('resize', resize);  // Aggiorna il canvas quando la finestra viene ridimensionata
 
-// Classe che rappresenta una stella nello spazio
+function resize() {
+    width = window.innerWidth;  
+    height = window.innerHeight;  
+    canvas.width = width;  
+    canvas.height = height;  
+}
+resize();  
+window.addEventListener('resize', resize);  
+
+
 class SpaceStar {
     constructor() {
-        this.reset();  // Inizializza la stella con valori casuali
+        this.reset();  
     }
 
-    // Metodo per resettare la posizione e le proprietà della stella
+   
     reset() {
-        this.x = Math.random() * width;  // Posizione X casuale
-        this.y = Math.random() * height;  // Posizione Y casuale
-        this.radius = Math.random() * 2;  // Raggio casuale (0-2px)
-        this.alpha = Math.random() * 0.8 + 0.2;  // Trasparenza casuale (0.2-1)
-        this.speedY = Math.random() * 0.2 + 0.05;  // Velocità verticale casuale (0.05-0.25)
+        this.x = Math.random() * width;  
+        this.y = Math.random() * height;  
+        this.radius = Math.random() * 2;  
+        this.alpha = Math.random() * 0.8 + 0.2;  
+        this.speedY = Math.random() * 0.2 + 0.05;  
     }
 
-    // Metodo per aggiornare la posizione della stella
+    
     update() {
-        this.y += this.speedY;  // Muovi la stella verso il basso
+        this.y += this.speedY;  
 
-        // Se la stella esce dallo schermo, riappare in cima con nuove proprietà
+       
         if (this.y > height) {
             this.x = Math.random() * width;
             this.y = 0;
         }
     }
 
-    // Metodo per disegnare la stella sul canvas
+    
     draw() {
-        ctx.beginPath();  // Inizia un nuovo percorso di disegno
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;  // Colore bianco con trasparenza
-        ctx.shadowColor = "white";  // Colore dell'ombra
-        ctx.shadowBlur = 6;  // Sfocatura dell'ombra
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);  // Disegna un cerchio
-        ctx.fill();  // Riempie il cerchio con il colore specificato
+        ctx.beginPath(); 
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;  
+        ctx.shadowColor = "white";  
+        ctx.shadowBlur = 6; 
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);  
+        ctx.fill(); 
     }
 }
 
-// Array per memorizzare tutte le stelle
-const spaceStars = [];
-const STAR_COUNT = 200;  // Numero totale di stelle
 
-// Crea tutte le stelle e le aggiunge all'array
+const spaceStars = [];
+const STAR_COUNT = 200;  
+
+
 for (let i = 0; i < STAR_COUNT; i++) {
     spaceStars.push(new SpaceStar());
 }
 
-// Funzione principale per l'animazione dello spazio
+
 function animateSpace() {
-    // Riempie il canvas con un colore di sfondo scuro (blu notte)
+
     ctx.fillStyle = "#000011";
     ctx.fillRect(0, 0, width, height);
 
-    // Per ogni stella: aggiorna la posizione e ridisegnala
+   
     spaceStars.forEach(star => {
         star.update();
         star.draw();
     });
 
-    // Richiama la funzione animateSpace al prossimo frame di animazione
+    
     requestAnimationFrame(animateSpace);
 }
 
-// Avvia l'animazione
+
 animateSpace();
 
