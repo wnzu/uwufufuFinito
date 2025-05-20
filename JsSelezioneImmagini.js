@@ -2004,19 +2004,19 @@ let videogiochi = ["Videogiochi",
     ["Uncharted 4: A Thief's End", 2016, "194", ["Action-Adventure", "Third-Person Shooter", "Story-Driven"]]
 ];
 
-let selezione = localStorage.getItem("tipo"); // Recupera la selezione dell’utente salvata in localStorage film , brainrot o videogiochi
-let immaginiFilm = []; // Array vuoto dove verranno salvate le immagini dei film
+let selezione = localStorage.getItem("tipo");
+let immaginiFilm = [];
 let cartellaImmagini = 'images/'; // Cartella di default per le immagini dei film
 let estensione = '.jpg'; // Estensione di default delle immagini
 
 if (selezione === "Film") {
 
-    immaginiFilm = Film.slice(1); // usa l'array Film saltando il primo elemento
+    immaginiFilm = Film.slice(1);
 
 } else if (selezione === "Brainrot") {
 
-    cartellaImmagini = 'images2/'; // Cambia cartella immagini per i brainrot
-    estensione = '.webp'; // Cambia estensione per i brainrot
+    cartellaImmagini = 'images2/'; // Cambia cartella
+    estensione = '.webp'; // Cambia estensione
     immaginiFilm = Brain.slice(1);
 
 } else if (selezione === "Videogiochi") {
@@ -2026,30 +2026,30 @@ if (selezione === "Film") {
 
 
 
-window.addEventListener('DOMContentLoaded', () => { // Quando il contenuto della pagina è stato caricato...
+window.addEventListener('DOMContentLoaded', () => { 
 
-    let select = document.getElementById("filmTypeSelect"); // Prende il menu a tendina per selezionare la categoria
-    let h2 = document.getElementById("cambia"); // Prende l'elemento h2 che cambierà il titolo
+    let select = document.getElementById("filmTypeSelect");
+    let h2 = document.getElementById("cambia");
 
     if (selezione === "Film") {
-        select.classList.remove("nascosto"); // Mostra il select per la categoria
+        select.classList.remove("nascosto"); // rimuovo classe
     }
 
     if (selezione === "Brainrot") {
-        h2.textContent = "Miglior brainrot"; // Cambia il testo dell’h2 se si è selezionato "Brainrot"
+        h2.textContent = "Miglior brainrot"; // Cambia il testo dell’h2 
     }
 
     if (selezione === "Videogiochi") {
-        h2.textContent = "Miglior videogioco";// Cambia il testo dell’h2 se si è selezionato "Videogiochi"
+        h2.textContent = "Miglior videogioco";
 
     }
 });
 
-let categoriaSelezionata = null; // Variabile che memorizzerà la categoria scelta
-let home = document.getElementById("titolo"); // titolo per tornare alla home
+let categoriaSelezionata = null;
+let home = document.getElementById("titolo"); 
 
 home.addEventListener("click", (e) => {
-    document.body.classList.add("fade-out"); // Aggiunge l'effetto di dissolvenza alla pagina
+    document.body.classList.add("fade-out"); 
     setTimeout(function () {
         window.location.href = "index.html"; // Dopo 500 ms, reindirizza alla home
     }, 500);
@@ -2057,8 +2057,8 @@ home.addEventListener("click", (e) => {
 
 // -------------------------------------------------
 
-let select = document.getElementById('filmTypeSelect'); // Riferimento al select per le categorie
-let titolo = document.getElementById("cambia"); // Titolo da cambiare in base alla categoria
+let select = document.getElementById('filmTypeSelect');
+let titolo = document.getElementById("cambia");
 
 if (select) {
     select.addEventListener('change', () => { // Quando si cambia la categoria nel select
@@ -2090,9 +2090,9 @@ if (select) {
 
 //-------------------------------------------------
 
-let filmInGioco = [];  // Array che conterrà i film scelti per il gioco
+let filmInGioco = [];  // ArrayDefinitivo
 
-let scelta = document.getElementById("round"); // Bottone per scegliere il numero di match 
+let scelta = document.getElementById("round"); // numero round
 
 scelta.addEventListener("click", () => {
 
@@ -2141,14 +2141,14 @@ scelta.addEventListener("click", () => {
 
         let numeroScelte = parseInt(selettore.value);
 
-        let filmDisponibili = immaginiFilm; // Inizialmente, tutti i film
+        let filmDisponibili = immaginiFilm; // inizialmente tutti i film
 
-        // Se esistono categorie, filtra. Se no, lascia tutto.
+        
         if (categoriaSelezionata && filmDisponibili[0][3]) { // Se è stata selezionata una categoria e il film ha un campo generi
             filmDisponibili = immaginiFilm.filter(film => film[3].includes(categoriaSelezionata)); // Filtra i film per categoria
         }
 
-        // Funzione per mischiare(algoritmo Fisher–Yates)
+    
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) { //Questo ciclo parte dalla fine dell'array e va all'indietro fino all'indice 1.A ogni passo del ciclo, i rappresenta l'indice dell'elemento corrente da mescolare.
                 let j = Math.floor(Math.random() * (i + 1));//In sostanza, scegli un indice casuale j tra 0 e i (incluso).
@@ -2156,7 +2156,7 @@ scelta.addEventListener("click", () => {
             }
         }
 
-        shuffleArray(filmDisponibili); // Mischia l’array
+        shuffleArray(filmDisponibili);
         filmInGioco = filmDisponibili.slice(0, numeroScelte); // Prende i primi numeroScelte
 
         let body = document.getElementById('container');
@@ -2169,7 +2169,7 @@ scelta.addEventListener("click", () => {
             img.classList.add("film");
             div.classList.add("contFilm");
 
-            img.src = cartellaImmagini + film[2] + estensione; // Costruisce il percorso immagine
+            img.src = cartellaImmagini + film[2] + estensione; 
 
             div.appendChild(img);
             body.appendChild(div);
@@ -2186,7 +2186,7 @@ scelta.addEventListener("click", () => {
         localStorage.setItem("numeroFilm", filmInGioco.length);// Salva il numero di film
         localStorage.setItem("cartellaImmagini", cartellaImmagini); // Salva la cartella delle immagini
         localStorage.setItem("estensione", estensione);// Salva l’estensione
-        window.location.href = "gioco.html";
+        window.location.href = "gioco.html"; 
 
 
     });
@@ -2209,72 +2209,70 @@ scelta.addEventListener("click", () => {
 
 });
 
-// Ottieni l'elemento canvas dal DOM e il suo contesto di rendering 2D
 let canvas = document.getElementById('background');
-let ctx = canvas.getContext('2d');
+let ctx = canvas.getContext('2d'); //contesto di canvas 2D
 
-// Variabili per memorizzare larghezza e altezza del canvas
+
 let width, height;
 
-// Funzione per ridimensionare il canvas in base alle dimensioni della finestra
+// ridimensiona il canvas in base alla finestra
 function resize() {
-    width = window.innerWidth;  // Larghezza della finestra
-    height = window.innerHeight;  // Altezza della finestra
-    canvas.width = width;  // Imposta la larghezza del canvas
-    canvas.height = height;  // Imposta l'altezza del canvas
+    width = window.innerWidth;  
+    height = window.innerHeight; 
+    canvas.width = width;  
+    canvas.height = height; 
 }
-resize();  // Esegui la funzione resize una volta all'inizio
-window.addEventListener('resize', resize);  // Aggiorna il canvas quando la finestra viene ridimensionata
+resize();
+window.addEventListener('resize', resize);  // quando la finestra viene ridimensionata applico la funzione
 
-// Classe che rappresenta una stella nello spazio
+// Classe per la stella
 class SpaceStar {
     constructor() {
-        this.reset();  // Inizializza la stella con valori casuali
+        this.reset();  // stella con valori casuali
     }
 
-    // Metodo per resettare la posizione e le proprietà della stella
+    // Metodo: resetto la posizione e le proprietà della stella
     reset() {
         this.x = Math.random() * width;  // Posizione X casuale
         this.y = Math.random() * height;  // Posizione Y casuale
-        this.radius = Math.random() * 2;  // Raggio casuale (0-2px)
-        this.alpha = Math.random() * 0.8 + 0.2;  // Trasparenza casuale (0.2-1)
-        this.speedY = Math.random() * 0.2 + 0.05;  // Velocità verticale casuale (0.05-0.25)
+        this.radius = Math.random() * 2;  // Raggio casuale
+        this.alpha = Math.random() * 0.8 + 0.2;  // Trasparenza casuale 
+        this.speedY = Math.random() * 0.2 + 0.05;  // Velocità verticale casuale
     }
 
-    // Metodo per aggiornare la posizione della stella
+    // Metodo: aggiorno la posizione della stella
     update() {
-        this.y += this.speedY;  // Muovi la stella verso il basso
+        this.y += this.speedY;  // muovo la stella verso il basso
 
-        // Se la stella esce dallo schermo, riappare in cima con nuove proprietà
+        // Se la stella esce dallo schermo, riappare in cima con posizione differente 
         if (this.y > height) {
             this.x = Math.random() * width;
             this.y = 0;
         }
     }
 
-    // Metodo per disegnare la stella sul canvas
+    // Metodo: disegno la stella sul canvas
     draw() {
-        ctx.beginPath();  // Inizia un nuovo percorso di disegno
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;  // Colore bianco con trasparenza
-        ctx.shadowColor = "white";  // Colore dell'ombra
-        ctx.shadowBlur = 6;  // Sfocatura dell'ombra
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);  // Disegna un cerchio
-        ctx.fill();  // Riempie il cerchio con il colore specificato
+        ctx.beginPath(); 
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`; 
+        ctx.shadowColor = "white"; 
+        ctx.shadowBlur = 6; 
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); 
+        ctx.fill(); 
     }
 }
 
-// Array per memorizzare tutte le stelle
+// Array per tutte le stelle
 const spaceStars = [];
-const STAR_COUNT = 200;  // Numero totale di stelle
+const STAR_COUNT = 200;  // Numero di stelle
 
 // Crea tutte le stelle e le aggiunge all'array
 for (let i = 0; i < STAR_COUNT; i++) {
     spaceStars.push(new SpaceStar());
 }
 
-// Funzione principale per l'animazione dello spazio
-function animateSpace() {
-    // Riempie il canvas con un colore di sfondo scuro (blu notte)
+// Funzione per sfondo 
+function animateSpace(){
     ctx.fillStyle = "#000011";
     ctx.fillRect(0, 0, width, height);
 
