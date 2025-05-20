@@ -196,10 +196,7 @@
         animation: fadeOut 0.5s ease-out forwards;
     }
 
-    /* 
-  Questa media query si attiva quando la larghezza della finestra del browser 
-  è di 900 pixel o meno e serve per mettere le immagini e la scritta vs in colonna e non più una di fianco all'altra
-*/
+
     @media (max-width: 900px) {
         .arena {
             grid-template-columns: 1fr;
@@ -210,9 +207,9 @@
 
         .versus {
             font-size: 60px;
-            /* Riduce la dimensione del font da 100px a 60px */
+           
             margin: 20px 0;
-            /* Aggiunge 20px di spazio sopra e sotto */
+           
         }
 
         #infoRound {
@@ -221,7 +218,7 @@
 
         #film2 {
             margin-bottom: 30px;
-            /* o padding-bottom: 30px; */
+          
         }
 
         #film1,
