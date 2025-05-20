@@ -190,7 +190,7 @@ let comeback = document.querySelector(".btn-close");
 
 comeback.addEventListener("click", () => {
 
-    window.location.href = "scelta.html";
+    window.location.href = "Scelta.html";
 });
 
 // Ottieni l'elemento canvas dal DOM e il suo contesto di rendering 2D
